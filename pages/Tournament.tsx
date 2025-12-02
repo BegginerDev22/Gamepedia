@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Trophy, Calendar, Map, DollarSign, Users, Info, Network, ArrowUp, ArrowDown } from 'lucide-react';
-import { MOCK_TOURNAMENTS, MOCK_TEAMS } from '../constants';
+import { MOCK_TOURNAMENTS, MOCK_TEAMS, MOCK_MAPS } from '../constants';
 import { Infobox } from '../components/Infobox';
 import { Bracket } from '../components/Bracket';
 
@@ -99,7 +99,7 @@ export const TournamentPage: React.FC = () => {
         {/* Content Area */}
         <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 p-6 min-h-[400px]">
             {activeTab === 'overview' && (
-                <div className="space-y-6">
+                <div className="space-y-8">
                     <section>
                         <h3 className="font-heading font-bold text-lg mb-3 text-gamepedia-dark dark:text-white border-l-4 border-gamepedia-blue pl-3">About</h3>
                         <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
@@ -108,14 +108,28 @@ export const TournamentPage: React.FC = () => {
                             The winner qualifies for the PMGC global slots.
                         </p>
                     </section>
+
+                    <section>
+                        <h3 className="font-heading font-bold text-lg mb-3 text-gamepedia-dark dark:text-white border-l-4 border-gamepedia-blue pl-3">Map Pool</h3>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            {Object.values(MOCK_MAPS).map(map => (
+                                <div key={map.id} className="group relative rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 aspect-video shadow-sm hover:shadow-md transition-shadow">
+                                    <img src={map.imageUrl} alt={map.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-90 group-hover:opacity-100" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-3">
+                                        <span className="text-white font-bold text-sm tracking-wide">{map.name}</span>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
                     
                     <section>
                         <h3 className="font-heading font-bold text-lg mb-3 text-gamepedia-dark dark:text-white border-l-4 border-gamepedia-blue pl-3">Participating Teams</h3>
                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                             {Object.values(MOCK_TEAMS).map(team => (
-                                <div key={team.id} className="flex items-center space-x-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:border-gamepedia-blue/30 transition-colors">
-                                    <img src={team.logoUrl} alt={team.name} className="w-8 h-8 rounded object-contain" />
-                                    <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{team.name}</span>
+                                <div key={team.id} className="flex items-center space-x-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:border-gamepedia-blue/30 transition-colors group cursor-default">
+                                    <img src={team.logoUrl} alt={team.name} className="w-8 h-8 rounded object-contain bg-white dark:bg-slate-700 p-0.5" />
+                                    <span className="text-sm font-medium text-slate-700 dark:text-slate-300 group-hover:text-gamepedia-blue transition-colors">{team.name}</span>
                                 </div>
                             ))}
                         </div>
