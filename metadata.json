@@ -1,0 +1,5 @@
+{
+  "name": "Gamepedia BGMI",
+  "description": "A production-ready, Liquipedia-style esports wiki for BGMI tournaments featuring real-time stats, tournament brackets, and AI-powered match analysis.",
+  "requestFramePermissions": []
+}
