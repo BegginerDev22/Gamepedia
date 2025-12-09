@@ -3,7 +3,7 @@
 Gamepedia is an experimental **BGMI (Battlegrounds Mobile India) esports hub** built with React + Vite.  
 It focuses on tournaments, teams, players, stats, wiki content and fun tools for fans – with **AI-powered insights** using Gemini.
 
-> 🔗 **Live Demo:** https://gamepedia-beta.vercel.app  
+> 🔗 **Live Demo:** https://gamepedia-fawn.vercel.app/
 
 ---
 
